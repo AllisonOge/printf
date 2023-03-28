@@ -25,10 +25,10 @@ int print_pointer(va_list args, char buffer[])
         } while (value > 0);
 
         _putchar('0');
-        _putchar('x');
+	_putchar('x');
 
         while (i > 0)
-                count += _putchar(buffer[i--]);
+		count += _putchar(buffer[i--]);
 
 	return (count);
 }
