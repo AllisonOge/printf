@@ -1,6 +1,5 @@
-#include <stdarg.h>
 #include "main.h"
-
+#include <stddef.h>
 
 /**
  * _printf - produces output according to a format and
@@ -13,19 +12,20 @@
 int _printf(const char *format, ...)
 {
 	va_list args;
-	/* start the arg list */
-	va_start(args, format);
-	const char *p = format;
 	int count = 0;
+	char buffer[BUFF_SIZE];
+	int (*fmt_func)(va_list, char[]);
+	const char *p = format;
 
+	/* get arg list */
+	va_start(args, format);
 	while (*p != '\0')
 	{
 		/* if the character is not a format specifier, print it */
 		if (*p != '%')
 		{
-			_putchar(*p);
+			count += _putchar(*p);
 			p++;
-			count++;
 			continue;
 		}
 
@@ -33,17 +33,22 @@ int _printf(const char *format, ...)
 		p++;
 
 		/* check for flag characters */
-		...
 
 		/* parse the width specifier */
-		...
 
 		/* parse the precision specifier */
-		...
 
 		/* parse the conversion specifier */
-		...
+		fmt_func = get_fmt_func(*p);
 
+		if (fmt_func == NULL)
+		{
+			/* unsupported format */
+			count += _putchar('%');
+			continue;
+		}
+
+		count += fmt_func(args, buffer);
 		p++;
 	}
 

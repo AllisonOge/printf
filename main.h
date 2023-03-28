@@ -1,7 +1,12 @@
 #ifndef MAIN_H
 #define MAIN_H
 
+#include <stdarg.h>
+
 #define BUFF_SIZE 1024
+
+/* HANDLE UNUSED ARGS */
+#define UNUSED(x) (void)(x)
 
 /* FLAGS */
 #define F_MINUS 1
@@ -41,6 +46,7 @@ int print_int(va_list args, char buffer[]);
 int print_unsigned(va_list args, char buffer[]);
 int print_octa(va_list args, char buffer[]);
 int print_hexadecimal(va_list args, char buffer[]);
+int print_Hexadecimal(va_list args, char buffer[]);
 
 /* Function to print non printable characters */
 int print_non_printable(va_list args, char buffer[]);
@@ -54,8 +60,11 @@ int print_reverse(va_list args, char buffer[]);
 /*Function to print a string in rot 13*/
 int print_rot13string(va_list args, char buffer[]);
 
+/*******************FUNCTION HANDLER********/
+int (*get_fmt_func(char fmt))(va_list, char[]);
+
 /****************** UTILS ******************/
-extern void _putchar(char c);
+extern int _putchar(char c);
 int is_printable(char);
 int append_hexa_code(char, char[], int);
 int is_digit(char);
