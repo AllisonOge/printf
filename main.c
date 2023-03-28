@@ -14,8 +14,8 @@ void test_char_string(void)
 	len2 = printf("Character:[%c]\n", 'H');
 	_printf("Len:[%d]\n", len);
 	printf("Len:[%d]\n", len2); 
-	len = _printf("String:[%s]", NULL);
-	len2 = printf("String:[%s]", NULL);
+	len = _printf("String:[%s]\n", NULL);
+	len2 = printf("String:[%s]\n", NULL);
 	_printf("Len:[%d]\n", len);
 	printf("Len:[%d]\n", len2);
 	len = _printf("String:[%s]\n", "I am a string !");
