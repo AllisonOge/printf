@@ -10,24 +10,25 @@
  */
 int print_pointer(va_list args, char buffer[])
 {
-        va_list args_copy;
-        int i = 0, count = 0, digit;
-        uintptr_t value;
+	va_list args_copy;
+	int i = 0, count = 0, digit;
+	uintptr_t value;
 
-        va_copy(args_copy, args);
-        value = va_arg(args_copy, uintptr_t);
+	va_copy(args_copy, args);
+	value = va_arg(args_copy, uintptr_t);
 
+	buffer[i++] = '\0';
         do {
-                digit = value % 16;
-                buffer[i++] = (digit < 10) ?
-                        (digit + '0') : (digit - 10 + 'a');
-                value /= 16;
-        } while (value > 0);
+		digit = value % 16;
+		buffer[i++] = (digit < 10) ?
+			(digit + '0') : (digit - 10 + 'a');
+		value /= 16;
+	} while (value > 0);
 
-        _putchar('0');
+	_putchar('0');
 	_putchar('x');
 
-        while (i > 0)
+	while (i > 0)
 		count += _putchar(buffer[i--]);
 
 	return (count);
