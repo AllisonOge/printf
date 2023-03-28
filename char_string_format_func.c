@@ -36,6 +36,9 @@ int print_string(va_list args, char buffer[])
 	va_copy(args_copy, args);
 	s = va_arg(args_copy, char *);
 
+	if (s == NULL)
+		s = "(null)";
+
 	/* find the length of string */
 	while (s[len] != '\0')
 		len++;
