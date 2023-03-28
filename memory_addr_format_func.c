@@ -25,8 +25,8 @@ int print_pointer(va_list args, char buffer[])
 		value /= 16;
 	} while (value > 0);
 
-	_putchar('0');
-	_putchar('x');
+	count += _putchar('0');
+	count += _putchar('x');
 
 	while (i > 0)
 		count += _putchar(buffer[--i]);
