@@ -74,13 +74,13 @@ int print_unsigned(va_list args, char buffer[])
  */
 int print_octa(va_list args, char buffer[])
 {
-	int i, count = 0;
+	int i = 0, count = 0;
 	va_list args_copy;
 	unsigned int value;
 
 	va_copy(args_copy, args);
 	value = va_arg(args_copy, unsigned int);
-	
+
 	buffer[i++] = '\0';
 	do {
 		buffer[i++] = (value & 7) + '0';
