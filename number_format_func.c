@@ -22,7 +22,7 @@ int print_int(va_list args, char buffer[])
 		value = -value;
 	}
 
-	buffer[i++] = '\0';
+	buffer[i] = '\0';
 	do {
 		buffer[i++] = (value % 10) + '0';
 		value /= 10;
@@ -53,7 +53,7 @@ int print_unsigned(va_list args, char buffer[])
 	va_copy(args_copy, args);
 	value = va_arg(args_copy, unsigned int);
 
-	buffer[i++] = '\0';
+	buffer[i] = '\0';
 	do {
 		buffer[i++] = (value % 10) + '0';
 		value /= 10;
@@ -81,7 +81,7 @@ int print_octa(va_list args, char buffer[])
 	va_copy(args_copy, args);
 	value = va_arg(args_copy, unsigned int);
 
-	buffer[i++] = '\0';
+	buffer[i] = '\0';
 	do {
 		buffer[i++] = (value & 7) + '0';
 		value >>= 3;
@@ -108,7 +108,7 @@ int print_hexadecimal(va_list args, char buffer[])
 	va_copy(args_copy, args);
 	value = va_arg(args_copy, unsigned int);
 
-	buffer[i++] = '\0';
+	buffer[i] = '\0';
 	do {
 		buffer[i++] = (value & 15) +
 			(((value & 15) < 10) ? '0' : 'a' - 10);
@@ -137,7 +137,7 @@ int print_Hexadecimal(va_list args, char buffer[])
 	va_copy(args_copy, args);
 	value = va_arg(args_copy, unsigned int);
 
-	buffer[i++] = '\0';
+	buffer[i] = '\0';
 	do {
 		buffer[i++] = (value & 15) +
 			(((value & 15) < 10) ? '0' : 'A' - 10);
