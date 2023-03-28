@@ -44,8 +44,8 @@ void test_decimal(void)
 	len2 = printf("Negative:[%d]\n", -762534);
 	_printf("Len:[%d]\n", len);
 	printf("Len:[%d]\n", len2);
-	len = _printf("Negative:[%d]\n", INT_MAX);
-	len2 = printf("Negative:[%d]\n", INT_MAX);
+	len = _printf("Negative:[%d]\n", INT_MIN);
+	len2 = printf("Negative:[%d]\n", INT_MIN);
 	_printf("Len:[%d]\n", len);
 	printf("Len:[%d]\n", len2);
 }
