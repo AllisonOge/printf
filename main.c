@@ -3,42 +3,109 @@
 #include "main.h"
 
 /**
+ * test_char_string - test edge cases with format specifiers c, s, %
+*/
+void test_char_string(void)
+{
+	int len;
+	int len2;
+
+	len = _printf("Character:[%c]\n", 'H');
+	len2 = printf("Character:[%c]\n", 'H');
+	_printf("Len:[%d]\n", len);
+	printf("Len:[%d]\n", len2); 
+	len = _printf("String:[%s]", NULL);
+	len2 = printf("String:[%s]", NULL);
+	_printf("Len:[%d]\n", len);
+	printf("Len:[%d]\n", len2);
+	len = _printf("String:[%s]\n", "I am a string !");
+	len2 = printf("String:[%s]\n", "I am a string !");
+	_printf("Len:[%d]\n", len);
+	printf("Len:[%d]\n", len2);
+	len = _printf("Percent:[%%]\n");
+	len2 = printf("Percent:[%%]\n");
+	_printf("Len:[%d]\n", len);
+	printf("Len:[%d]\n", len2);
+}
+
+/**
+ * test_decimal - test edge cases with format specifiers i, d
+*/
+void test_decimal(void)
+{
+	int len;
+	int len2;
+
+	len = _printf("Let's try to printf a simple sentence.\n");
+	len2 = printf("Let's try to printf a simple sentence.\n");
+	_printf("Length:[%d, %i]\n", len, len);
+	printf("Length:[%d, %i]\n", len2, len2);
+	len =_printf("Negative:[%d]\n", -762534);
+	len2 = printf("Negative:[%d]\n", -762534);
+	_printf("Len:[%d]\n", len);
+	printf("Len:[%d]\n", len2);
+	len = _printf("Negative:[%d]\n", INT_MAX);
+	len2 = printf("Negative:[%d]\n", INT_MAX);
+	_printf("Len:[%d]\n", len);
+	printf("Len:[%d]\n", len2);
+}
+
+/**
+ * test_unsigned - test edge cases with format specifiers u, o, x, X
+*/
+void test_unsigned(void)
+{
+	int len;
+	int len2;
+	unsigned int ui;
+
+	ui = (unsigned int)INT_MAX + 1024;
+	len = _printf("Unsigned:[%u]\n", ui);
+	len2 = printf("Unsigned:[%u]\n", ui);
+	_printf("Len:[%d]\n", len);
+	printf("Len:[%d]\n", len2);
+	len = _printf("Unsigned octal:[%o]\n", ui);
+	len2 = printf("Unsigned octal:[%o]\n", ui);
+	_printf("Len:[%d]\n", len);
+	printf("Len:[%d]\n", len2);
+	len = _printf("Unsigned hexadecimal:[%x, %X]\n", ui, ui);
+	len2 = printf("Unsigned hexadecimal:[%x, %X]\n", ui, ui);
+	_printf("Len:[%d]\n", len);
+	printf("Len:[%d]\n", len2);
+}
+
+/**
+ * test_pointer - test edge cases with format specifier p
+*/
+void test_pointer(void)
+{
+	int len;
+	int len2;
+	void *addr;
+
+	addr = (void *)0x7ffe637541f0;
+	len = _printf("Address:[%p]\n", addr);
+	len2 = printf("Address:[%p]\n", addr);
+	_printf("Len:[%d]\n", len);
+	printf("Len:[%d]\n", len2);
+}
+
+/**
  * main - Entry point
  *
  * Return: Always 0
  */
 int main(void)
 {
-    int len;
-    int len2;
-    unsigned int ui;
-    void *addr;
+	test_decimal();
 
-    len = _printf("Let's try to printf a simple sentence.\n");
-    len2 = printf("Let's try to printf a simple sentence.\n");
-    ui = (unsigned int)INT_MAX + 1024;
-    addr = (void *)0x7ffe637541f0;
-    _printf("Length:[%d, %i]\n", len, len);
-    printf("Length:[%d, %i]\n", len2, len2);
-    _printf("Negative:[%d]\n", -762534);
-    printf("Negative:[%d]\n", -762534);
-    _printf("Unsigned:[%u]\n", ui);
-    printf("Unsigned:[%u]\n", ui);
-    _printf("Unsigned octal:[%o]\n", ui);
-    printf("Unsigned octal:[%o]\n", ui);
-    _printf("Unsigned hexadecimal:[%x, %X]\n", ui, ui);
-    printf("Unsigned hexadecimal:[%x, %X]\n", ui, ui);
-    _printf("Character:[%c]\n", 'H');
-    printf("Character:[%c]\n", 'H');
-    _printf("String:[%s]\n", "I am a string !");
-    printf("String:[%s]\n", "I am a string !");
-    _printf("Address:[%p]\n", addr);
-    printf("Address:[%p]\n", addr);
-    len = _printf("Percent:[%%]\n");
-    len2 = printf("Percent:[%%]\n");
-    _printf("Len:[%d]\n", len);
-    printf("Len:[%d]\n", len2);
-    _printf("Unknown:[%r]\n");
-    printf("Unknown:[%r]\n");
-    return (0);
+    test_unsigned();
+
+	test_char_string();
+
+	test_pointer();
+
+	_printf("Unknown:[%r]\n");
+	printf("Unknown:[%r]\n");
+	return (0);
 }
