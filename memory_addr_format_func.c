@@ -17,7 +17,7 @@ int print_pointer(va_list args, char buffer[])
 	va_copy(args_copy, args);
 	value = va_arg(args_copy, uintptr_t);
 
-	buffer[i++] = '\0';
+	buffer[i] = '\0';
 	do {
 		digit = value % 16;
 		buffer[i++] = (digit < 10) ?
@@ -29,7 +29,7 @@ int print_pointer(va_list args, char buffer[])
 	_putchar('x');
 
 	while (i > 0)
-		count += _putchar(buffer[i--]);
+		count += _putchar(buffer[--i]);
 
 	return (count);
 }
