@@ -12,6 +12,7 @@ int print_int(va_list args, char buffer[])
 	int i = 0, neg = 0, count = 0;
 	va_list args_copy;
 	int value;
+	unsigned int num;
 
 	va_copy(args_copy, args);
 	value = va_arg(args_copy, int);
@@ -19,7 +20,10 @@ int print_int(va_list args, char buffer[])
 	if (value < 0)
 	{
 		neg = 1;
-		value = -value;
+		num = (unsigned int) ((-1) * value);
+	} else
+	{
+		num = (unsigned int) value;
 	}
 
 	buffer[i] = '\0';
