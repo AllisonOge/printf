@@ -33,6 +33,7 @@ typedef struct fmt
 
 
 int _printf(const char *format, ...);
+int (*get_fmt_func(char fmt))(va_list, char[]);
 
 /****************** FUNCTIONS ******************/
 
@@ -44,6 +45,7 @@ int print_percent(va_list args, char buffer[]);
 /* Functions to print numbers */
 int print_int(va_list args, char buffer[]);
 int print_unsigned(va_list args, char buffer[]);
+int print_binary(va_list args, char buffer[]);
 int print_octa(va_list args, char buffer[]);
 int print_hexadecimal(va_list args, char buffer[]);
 int print_Hexadecimal(va_list args, char buffer[]);
@@ -59,9 +61,6 @@ int print_reverse(va_list args, char buffer[]);
 
 /*Function to print a string in rot 13*/
 int print_rot13string(va_list args, char buffer[]);
-
-/*******************FUNCTION HANDLER********/
-int (*get_fmt_func(char fmt))(va_list, char[]);
 
 /****************** UTILS ******************/
 extern int _putchar(char c);
