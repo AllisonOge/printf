@@ -65,7 +65,6 @@ int print_rot13string(va_list args, char buffer[]);
 /****************** UTILS ******************/
 extern int _putchar(char c);
 int is_printable(char);
-int append_hexa_code(char, char[], int);
 int is_digit(char);
 
 #endif /* MAIN_H */
