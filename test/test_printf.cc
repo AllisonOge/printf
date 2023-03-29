@@ -49,16 +49,41 @@ void testPrintf(int (*printFunc)(const char *, ...), const char *str, ...)
 
 /***** Test case to assert the output with conversion specifiers c s and % ***/
 
-// Test case to assert funtion prints format
-TEST(TestPrintf, TestString)
+// Test edge cases
+TEST(TestPrintf, TestEdges)
 {
-    const char *format = "Hello World!\n";
+    const char *format = NULL;
     testPrintf(&_printf, format);
 }
 
 // Test case to assert function prints with conversion specifier c
 TEST(TestPrintf, TestChar)
 {
-    const char *format = "Character:[%c]\n";
-    testPrintf(&_printf, format, 'H');
+    const char *format = "%c\n";
+    testPrintf(&_printf, format, 'S');
+
+    const char *format1 = "A char inside a sentence: %c. Did it work?\n";
+    testPrintf(&_printf, format1, 'F');
+
+    const char *format2 = "Let's see if the cast is correctly done: %c. Did it work?\n";
+    testPrintf(&_printf, format2, 48);
+    
+    const char *format3 = "%c";
+    testPrintf(&_printf, format3, '\0');
+}
+
+// Test case to assert funtion prints format
+TEST(TestPrintf, TestString)
+{
+    const char *format = "Let's print a simple sentence.\n";
+    testPrintf(&_printf, format);
+
+    const char *format1 = "%s";
+    testPrintf(&_printf, format1, "This sentence is retrieved from va_args!\n");
+
+    const char *format2 = "Complete the sentence: You %s nothing, Jon Snow.\n";
+    testPrintf(&_printf, format2, "know");
+
+    const char *format3 = "Complete the sentence: You %s nothing, Jon Snow.\n";
+    testPrintf(&_printf, format3, (char *)0);
 }
