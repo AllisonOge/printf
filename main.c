@@ -64,6 +64,10 @@ void test_unsigned(void)
 	len2 = printf("Unsigned:[%u]\n", ui);
 	_printf("Len:[%d]\n", len);
 	printf("Len:[%d]\n", len2);
+    len = _printf("Binary:[%b]\n", 98);
+    len2 = printf("Binary:[%b]\n", 98);
+	_printf("Len:[%d]\n", len);
+	printf("Len:[%d]\n", len2);
 	len = _printf("Unsigned octal:[%o]\n", ui);
 	len2 = printf("Unsigned octal:[%o]\n", ui);
 	_printf("Len:[%d]\n", len);
