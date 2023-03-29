@@ -15,6 +15,7 @@ int (*get_fmt_func(char fmt))(va_list, char[])
 		{'i', print_int},
 		{'d', print_int},
 		{'u', print_unsigned},
+		{'b', print_binary},
 		{'o', print_octa},
 		{'x', print_hexadecimal},
 		{'X', print_Hexadecimal},
