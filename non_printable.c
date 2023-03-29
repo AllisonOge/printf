@@ -1,54 +1,41 @@
 #include "main.h"
 
+/************************* PRINT NON PRINTABLE *************************/
 /**
- * print_non_printable - prints ASCII code in hexa of non-printable chars
- * @args: list of arguments
- * @buffer: buffer array to handle print
- * 
- * Return: number of chars printed except the null byte
-*/
-int print_non_printable(va_list args, char buffer[])
+ * print_non_printable - Prints ascii codes in hexa of non printable chars
+ * @types: Lista of arguments
+ * @buffer: Buffer array to handle print
+ * @flags:  Calculates active flags
+ * @width: get width
+ * @precision: Precision specification
+ * @size: Size specifier
+ * Return: Number of chars printed
+ */
+int print_non_printable(va_list types, char buffer[],
+	int flags, int width, int precision, int size)
 {
-	va_list args_copy;
-	int len = 0, i = 0, count = 0;
-	char map_to[] = "0123456789ABCDEF";
-	char *s;
+	int i = 0, offset = 0;
+	char *str = va_arg(types, char *);
 
-	va_copy(args_copy, args);
-	s = va_arg(args_copy, char *);
+	UNUSED(flags);
+	UNUSED(width);
+	UNUSED(precision);
+	UNUSED(size);
 
-	buffer[i] = '\0';
-	/* get length of string */
-	while (s[len] != '\0')
-		len++;
-	do {
-		if (is_printable(s[len]))
-			buffer[i++] = s[len];
+	if (str == NULL)
+		return (write(1, "(null)", 6));
+
+	while (str[i] != '\0')
+	{
+		if (is_printable(str[i]))
+			buffer[i + offset] = str[i];
 		else
-		{
-			if (s[len] < 0) s[len] *= -1;
-			buffer[i++] = map_to[s[len] % 16];
-			buffer[i++] = map_to[(s[len] / 16) % 16];
-			buffer[i++] = 'x';
-			buffer[i++] = '\\';
-		}
-	} while (--len >= 0);
+			offset += append_hexa_code(str[i], buffer, i + offset);
 
-	while(i > 4)
-		count += _putchar(buffer[--i]);
+		i++;
+	}
 
-	return (count);
-}
+	buffer[i + offset] = '\0';
 
-/**
- * is_printable - checks if a char is printable
- * @c: char to be checked
- * 
- * Return: 1 if c is printable otherwise 0
-*/
-int is_printable(char c)
-{
-	if (c >= 32 && c < 127)
-		return (1);
-	return (0);
+	return (write(1, buffer, i + offset));
 }
