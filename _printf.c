@@ -11,6 +11,9 @@
  */
 int _printf(const char *format, ...)
 {
+	if (format == NULL)
+		return (-1);
+
 	va_list args;
 	int count = 0;
 	char buffer[BUFF_SIZE];
