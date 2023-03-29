@@ -9,15 +9,15 @@
  * @buffer: buffer array to handle print
  * @flags: calculates active flags
  * @width: get width
- * @precision: precision specifier 
+ * @precision: precision specifier
  * @size: size specifier
- * 
+ *
  * Return: number of chars printed
  */
- int handle_write_char(char c, char buffer[],
- 	int flags, int width, int precision, int size)
-{	
-	int i;
+int handle_write_char(char c, char buffer[],
+	int flags, int width, int precision, int size)
+{
+	int i = 0;
 	char padd = ' ';
 
 	UNUSED(precision);
@@ -25,7 +25,7 @@
 
 	if (flags & F_ZERO)
 		padd = '0';
-	
+
 	buffer[i++] = c;
 	buffer[i] = '\0';
 
@@ -45,8 +45,6 @@
 
 	return (write(1, &buffer[0], 1));
 }
-	
-
 
 /************************* WRITE NUMBER *************************/
 /**

@@ -74,7 +74,7 @@ long int convert_size_unsgnd(unsigned long int num, int size)
 /**
  * is_digit - checks if char is digit
  * @c: char to be checked
- * 
+ *
  * Return: 1 if c is digit otherwise 0
 */
 int is_digit(char c)
