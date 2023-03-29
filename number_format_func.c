@@ -28,9 +28,9 @@ int print_int(va_list args, char buffer[])
 
 	buffer[i] = '\0';
 	do {
-		buffer[i++] = (value % 10) + '0';
-		value /= 10;
-	} while (value > 0);
+		buffer[i++] = (num % 10) + '0';
+		num /= 10;
+	} while (num > 0);
 
 	if (neg)
 		buffer[i++] = '-';
