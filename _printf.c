@@ -17,6 +17,9 @@ int _printf(const char *format, ...)
 	int (*fmt_func)(va_list, char[]);
 	const char *p = format;
 
+	if (p == NULL)
+		return (-1);
+
 	/* get arg list */
 	va_start(args, format);
 	while (*p != '\0')
