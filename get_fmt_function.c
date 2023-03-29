@@ -20,6 +20,7 @@ int (*get_fmt_func(char fmt))(va_list, char[])
 		{'x', print_hexadecimal},
 		{'X', print_Hexadecimal},
 		{'p', print_pointer},
+		{'S', print_non_printable},
 		{'%', print_percent},
 		{'\0', NULL}
 	};

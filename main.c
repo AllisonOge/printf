@@ -92,6 +92,17 @@ void test_pointer(void)
 }
 
 /**
+ * test_non_printable - test edge cases with format specifier S
+*/
+void test_non_printable(void)
+{
+	int len;
+
+	len = _printf("Special:[%S]\n", "Best\nSchool");
+	_printf("Len:[%d]\n", len);
+}
+
+/**
  * main - Entry point
  *
  * Return: Always 0
@@ -105,6 +116,8 @@ int main(void)
 	test_char_string();
 
 	test_pointer();
+
+	test_non_printable();
 
 	_printf("Unknown:[%r]\n");
 	printf("Unknown:[%r]\n");
