@@ -106,9 +106,28 @@ TEST(TestPrintf, TestPercent)
     const char *format = "%";
     testPrintf(&_printf, format);
 
-    const char *format1 = "%!\n";
+    const char *format1 = "%%";
     testPrintf(&_printf, format1);
 
-    const char *format2 = "%K\n";
+    const char *format2 = "Should print a single percent sign: %%\n";
     testPrintf(&_printf, format2);
+
+    const char *format3 = "%!\n";
+    testPrintf(&_printf, format3);
+
+    const char *format4 = "%K\n";
+    testPrintf(&_printf, format4);
+}
+
+// Test case to assert function prints with combined specifiers
+TEST(TestPrintf, TestCombined)
+{
+    const char *format = "%c%cth %s%s a%cg%s: Y%sou %s no%ching%s Snow.%c";
+    testPrintf(&_printf, format, 'W', 'i', "some ", "more", 'r', "s", "", "know", 't', ", Jon", '\n');
+
+    const char *format1 = "%s%c%c%c%s%%%s%c";
+    testPrintf(&_printf, format1, "Loading ", '.', '.', '.', " 99", " Please wait", '\n');
+
+    const char *format2 = "css%ccs%scscscs";
+    testPrintf(&_printf, format2, 'T', "Test");
 }
