@@ -1,6 +1,7 @@
 #include "gtest/gtest.h"
 extern "C"
 {
+#define STRING_SIZE 10000
 #include "main.h"
 #include <stdio.h>
 #include <stdlib.h>
@@ -67,12 +68,12 @@ TEST(TestPrintf, TestChar)
 
     const char *format2 = "Let's see if the cast is correctly done: %c. Did it work?\n";
     testPrintf(&_printf, format2, 48);
-    
+
     const char *format3 = "%c";
     testPrintf(&_printf, format3, '\0');
 }
 
-// Test case to assert funtion prints format
+// Test case to assert function prints with conversion specifier s
 TEST(TestPrintf, TestString)
 {
     const char *format = "Let's print a simple sentence.\n";
@@ -86,4 +87,28 @@ TEST(TestPrintf, TestString)
 
     const char *format3 = "Complete the sentence: You %s nothing, Jon Snow.\n";
     testPrintf(&_printf, format3, (char *)0);
+
+    char bigStr[STRING_SIZE + 1];
+    strcpy(bigStr, "This is a big string");
+    for (int i = 0; i < 1000; i++)
+        strcpy(bigStr, " that keeps getting bigger");
+
+    const char *format4 = bigStr;
+    testPrintf(&_printf, format4);
+
+    const char *format5 = "man gcc:\n%s";
+    testPrintf(&_printf, format5, bigStr);
+}
+
+// Test case to assert function prints with conversion specifier %
+TEST(TestPrintf, TestPercent)
+{
+    const char *format = "%";
+    testPrintf(&_printf, format);
+
+    const char *format1 = "%!\n";
+    testPrintf(&_printf, format1);
+
+    const char *format2 = "%K\n";
+    testPrintf(&_printf, format2);
 }
