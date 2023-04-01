@@ -11,14 +11,14 @@
  */
 int _printf(const char *format, ...)
 {
-	if (format == NULL)
-		return (-1);
-
 	va_list args;
 	int count = 0;
 	char buffer[BUFF_SIZE];
 	int (*fmt_func)(va_list, char[]);
 	const char *p = format;
+
+	if (format == NULL)
+		return (-1);
 
 	/* get arg list */
 	va_start(args, format);
