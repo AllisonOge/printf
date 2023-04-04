@@ -43,8 +43,7 @@ TEST(TestPrintf, TestBuffer)
     testPrintf(&_printf, str727, "you", "normally does preprocessing, compilation, assembly", '"', '"', "For example,", str147, 'o', str97, 123456789);
 
     char str1020_2[1020 + 1];
-    strcpy(str1020_2, "AAAAAAAAAAAAAAAAAAA");
-    for (int i = 0; i < 1000; i++)
+    for (int i = 0; i < 1019; i++)
         strcpy(str1020_2, "A");
     strcpy(str1020_2, "\0");
     testPrintf(&_printf, "%s%b\n", str1020);
