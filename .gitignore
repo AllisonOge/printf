@@ -1,2 +1,5 @@
 # ignore compilation
 main
+
+# build directory
+/build
