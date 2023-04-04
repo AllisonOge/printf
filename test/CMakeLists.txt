@@ -22,6 +22,11 @@ add_executable(test_buffer test_printf.cc
     test_buffer.cc
 )
 
+add_executable(test_unsigned_octal_hex
+    test_printf.cc 
+    test_unsigned_octal_hex.cc
+)
+
 # link the executable to gtest library
 target_link_libraries(test_char_string_percent_format
     myprintf
@@ -39,6 +44,11 @@ target_link_libraries(test_binary
 )
 
 target_link_libraries(test_buffer
+    myprintf
+    gtest gtest_main
+)
+
+target_link_libraries(test_unsigned_octal_hex
     myprintf
     gtest gtest_main
 )
@@ -61,5 +71,10 @@ add_test(NAME test_binary
 
 add_test(NAME test_buffer 
          COMMAND test_buffer
+         WORKING_DIRECTORY ${PROJECT_SOURCE_DIR}/test
+)
+
+add_test(NAME test_unsigned_octal_hex 
+         COMMAND test_unsigned_octal_hex
          WORKING_DIRECTORY ${PROJECT_SOURCE_DIR}/test
 )
